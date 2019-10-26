@@ -9,7 +9,6 @@ int main()
     constexpr int WINDOW_WIDTH = 800;
     constexpr int WINDOW_HEIGHT = 600;
     constexpr int pointCount = 200;
-    constexpr int polarRoseRadius = 200;
     constexpr int polarRoseTrajectoryRadius = 100;
     constexpr int polarRoseSpeed = 4;
 
@@ -50,9 +49,10 @@ int main()
         for (int pointNo = 0; pointNo < pointCount; ++pointNo)
         {
             float angle = float(2 * M_PI * pointNo) / float(pointCount);
+            int polarRoseRadius = 200 * std::sin(6 * angle);
             sf::Vector2f point = {
-                polarRoseRadius * std::sin(6 * angle) * std::sin(angle),
-                polarRoseRadius * std::sin(6 * angle) * std::cos(angle)};
+                polarRoseRadius * std::sin(angle),
+                polarRoseRadius * std::cos(angle)};
             polarRose.setPoint(pointNo, point);
         }
 

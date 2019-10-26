@@ -1,0 +1,6 @@
+/sfml.2/*
+/sfml.3/*
+!*/**/*.cpp
+!/**/CMakeLists.txt
+!/**/*.exe
+!CMakeLists.txt
