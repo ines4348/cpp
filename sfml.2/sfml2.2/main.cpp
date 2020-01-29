@@ -28,6 +28,16 @@ int main()
     polarRose.setFillColor(sf::Color(204, 153, 255));
     polarRose.setPointCount(pointCount);
 
+    for (int pointNo = 0; pointNo < pointCount; ++pointNo)
+    {
+        float angle = float(2 * M_PI * pointNo) / float(pointCount);
+        int polarRoseRadius = 200 * std::sin(6 * angle);
+        sf::Vector2f point = {
+            polarRoseRadius * std::sin(angle),
+            polarRoseRadius * std::cos(angle)};
+        polarRose.setPoint(pointNo, point);
+    }
+
     while (window.isOpen())
     {
         sf::Event event;
@@ -45,16 +55,6 @@ int main()
             polarRoseCenter.x + polarRoseTrajectoryRadius * std::sin(polarRoseAngleTrajectory),
             polarRoseCenter.y + polarRoseTrajectoryRadius * std::cos(polarRoseAngleTrajectory)};
         polarRose.setPosition(polarRosePosition);
-
-        for (int pointNo = 0; pointNo < pointCount; ++pointNo)
-        {
-            float angle = float(2 * M_PI * pointNo) / float(pointCount);
-            int polarRoseRadius = 200 * std::sin(6 * angle);
-            sf::Vector2f point = {
-                polarRoseRadius * std::sin(angle),
-                polarRoseRadius * std::cos(angle)};
-            polarRose.setPoint(pointNo, point);
-        }
 
         window.clear();
         window.draw(polarRose);
